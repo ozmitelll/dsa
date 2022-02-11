@@ -67,9 +67,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
                 if (array[j - 1] > array[j]) {
-                    temp = array[j - 1];
-                    array[j - 1] = array[j];
-                    array[j] = temp;
+                    swap(array, j, j-1);
                 }
             }
         }
@@ -80,11 +78,10 @@ public class Main {
         for (int i = 0; i < array.length - 1; i++) {
             int min_idx = i;
             for (int j = i + 1; j < array.length; j++)
-                if (array[j] < array[min_idx])
+                if (array[j] < array[min_idx]) {
                     min_idx = j;
-            int temp = array[min_idx];
-            array[min_idx] = array[i];
-            array[i] = temp;
+                    swap(array, i, min_idx);
+                }
         }
         return array;
     }
@@ -117,6 +114,11 @@ public class Main {
         }
         return index;
 
+    }
+    public static void swap(int[] array, int firstIndex, int secondIndex){
+        int temp = array[secondIndex];
+        array[secondIndex] = array[firstIndex];
+        array[firstIndex] = temp;
     }
 
 
